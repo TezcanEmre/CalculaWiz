@@ -44,7 +44,7 @@ extension CWButton {
         case .number(let int):
             return int.description
         case .decimal:
-            return ","
+            return "."
         case .backspace:
             return ""
         } }

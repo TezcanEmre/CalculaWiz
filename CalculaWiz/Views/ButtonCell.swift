@@ -9,10 +9,10 @@ import UIKit
 
 class ButtonCell: UICollectionViewCell {
     static let identifier = "ButtonCell"
-    // Varriables
+    //MARK: - Varriables
     private(set) var CWButtonn : CWButton!
     
-    //UI Components
+    //MARK: - UI Components
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -26,7 +26,7 @@ class ButtonCell: UICollectionViewCell {
             imageView.tintColor = .white
             return imageView
         }()
-    // Configure
+    //MARK: - Configure
     public func configure(with CWButtonn: CWButton) {
         self.CWButtonn = CWButtonn
         self.titleLabel.text = CWButtonn.title
@@ -51,7 +51,7 @@ class ButtonCell: UICollectionViewCell {
         self.titleLabel.textColor = .buttonClickedRenk
         self.backgroundColor = .buttonTextRenk
     }
-    // Setup UI
+    //MARK: - Setup UI
     private func setupUI() {
         self.addSubview(titleLabel)
         self.addSubview(iconImageView)

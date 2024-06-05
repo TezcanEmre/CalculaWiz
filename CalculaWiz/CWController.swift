@@ -8,11 +8,11 @@
 import UIKit
 
 class CWController: UIViewController {
-    // Varriables
+    // MARK: - Varriables
     let viewModel: CWControllerViewModel
     
     
-    //UI Components
+    //MARK: - UI Components
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -24,7 +24,7 @@ class CWController: UIViewController {
         return collectionView
     } ()
     
-    // Lifecycle
+    //MARK: - Lifecycle
     init( viewModel: CWControllerViewModel = CWControllerViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -49,7 +49,7 @@ class CWController: UIViewController {
         }
     }
 
-    //UI Setup
+    //MARK: - UI Setup
     private func setupUI() {
         self.view.addSubview(self.collectionView)
         self.collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,10 +65,10 @@ class CWController: UIViewController {
     }
 
 }
-//CollectionView Methods
+//MARK: - CollectionView Methods
 extension CWController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    // Section Header Cell
+    //MARK: - Section Header Cell
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -97,7 +97,7 @@ extension CWController: UICollectionViewDelegate, UICollectionViewDataSource, UI
         
     }
     
-//Normal Cells (Buttons)
+//MARK: - Normal Cells (Buttons)
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.viewModel.CWButtonCells.count
     }

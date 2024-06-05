@@ -9,7 +9,7 @@ import UIKit
 
 class CWHeaderCell: UICollectionReusableView {
         static let identifier = "CWHeaderCell"
-    // UI Components
+    //MARK: - UI Components
     private let label: UILabel = {
         let label = UILabel()
         label.textColor = .textRenk
@@ -19,7 +19,7 @@ class CWHeaderCell: UICollectionReusableView {
         return label
     }()
     
-    // Lifecycle
+    //MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupUI()
@@ -33,7 +33,7 @@ class CWHeaderCell: UICollectionReusableView {
     }
     
     
-    // UI Setup
+    //MARK: - UI Setup
     private func setupUI() {
         self.backgroundColor = .bgRenk
         self.addSubview(label)
