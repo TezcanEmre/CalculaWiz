@@ -131,6 +131,7 @@ extension CWController: UICollectionViewDelegate, UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let buttonCell = self.viewModel.CWButtonCells[indexPath.row]
         self.viewModel.didSelectButton(with: buttonCell)
+        
     }
     
 }

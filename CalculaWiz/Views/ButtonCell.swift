@@ -48,9 +48,23 @@ class ButtonCell: UICollectionViewCell {
         
     }
     public func setOperationSelected() {
-        self.titleLabel.textColor = .buttonClickedRenk
-        self.backgroundColor = .buttonTextRenk
+        UIView.animate(withDuration: 0.3) {
+            self.titleLabel.textColor = .buttonClickedRenk
+            self.backgroundColor = .buttonTextRenk
+        }
     }
+    public func otherButtonSelected() {
+        UIView.animate(withDuration: 0.45) {
+            self.titleLabel.textColor = .buttonClickedRenk
+            self.backgroundColor = .buttonTextRenk
+        }
+        UIView.animate(withDuration: 0.45, delay: 0.1) {
+            self.titleLabel.textColor = .buttonTextRenk
+            self.backgroundColor = .buttonRenk
+        }
+    }
+    
+
     //MARK: - Setup UI
     private func setupUI() {
         self.addSubview(titleLabel)
