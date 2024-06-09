@@ -9,7 +9,7 @@ import UIKit
 
 class CWController: UIViewController {
     // MARK: - Varriables
-    let viewModel: CWControllerViewModel
+    var viewModel = CWControllerViewModel()
     
     
     //MARK: - UI Components
@@ -46,10 +46,7 @@ class CWController: UIViewController {
             }
             
         }
-        viewModel.presentMenuVC = { [weak self] in
-            let menuViewController = MenuViewController()
-            self?.present(menuViewController, animated: true, completion: nil)
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(buttonClickedAction), name: NSNotification.Name("buttonclicked"), object: nil)
         
     }
 
@@ -66,6 +63,11 @@ class CWController: UIViewController {
 
         ])
         
+    }
+    // Menu button forwarding
+    @objc func buttonClickedAction() {
+        let vc = MenuViewController()
+        self.present(vc, animated: true)
     }
 
 }
@@ -97,6 +99,7 @@ extension CWController: UICollectionViewDelegate, UICollectionViewDataSource, UI
         let headherHeight = availableScreenHeight - totalCellHeight - totalVerticalCellSpacing
         return CGSize(width: view.frame.size.width, height: headherHeight)
         
+    
         
         
     }

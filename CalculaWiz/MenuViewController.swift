@@ -11,9 +11,9 @@ class MenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemPink
+        self.view.backgroundColor = .bgRenk
 
-        // Do any additional setup after loading the view.
+        
     }
     
 

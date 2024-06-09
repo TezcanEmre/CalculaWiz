@@ -8,7 +8,6 @@ enum CurrentNumber {
 class CWControllerViewModel {
     
     var updateView: (() -> Void)?
-    var presentMenuVC: (() -> Void)?
     
     // MARK: - TableView DataSource Array
     let CWButtonCells: [CWButton] = [
@@ -18,10 +17,6 @@ class CWControllerViewModel {
         .number(1), .number(2), .number(3), .add,
         .number(0), .decimal, .backspace, .equals
     ]
-    //MARK: - Menu button clicked
-    func menuButtonTapped() {
-        presentMenuVC?()
-    }
     
     // MARK: - Variables
     private(set) lazy var CWHeaderLabel: String = self.firstNumber ?? "0"

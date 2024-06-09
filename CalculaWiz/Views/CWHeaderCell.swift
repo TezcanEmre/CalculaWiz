@@ -2,7 +2,7 @@ import UIKit
 
 class CWHeaderCell: UICollectionReusableView {
     static let identifier = "CWHeaderCell"
-    var viewModel: CWControllerViewModel?
+    
     //MARK: - UI Components
     private let label: UILabel = {
         let label = UILabel()
@@ -25,10 +25,9 @@ class CWHeaderCell: UICollectionReusableView {
         button.clipsToBounds = true
         return button
     }()
-    @objc func menuButtonClicked() {
-        viewModel?.menuButtonTapped()
+    @objc func buttonAction() {
+        NotificationCenter.default.post(name: NSNotification.Name("buttonclicked"), object: nil)
     }
-    
     
     //MARK: - Lifecycle
     override init(frame: CGRect) {
@@ -68,6 +67,6 @@ class CWHeaderCell: UICollectionReusableView {
             self.button.widthAnchor.constraint(equalToConstant: 60),
             self.button.heightAnchor.constraint(equalToConstant: 30)
         ])
-        button.addTarget(self, action: #selector(menuButtonClicked), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
 }
