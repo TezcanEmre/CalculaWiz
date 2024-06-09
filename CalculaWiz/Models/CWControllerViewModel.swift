@@ -8,6 +8,7 @@ enum CurrentNumber {
 class CWControllerViewModel {
     
     var updateView: (() -> Void)?
+    var presentMenuVC: (() -> Void)?
     
     // MARK: - TableView DataSource Array
     let CWButtonCells: [CWButton] = [
@@ -17,6 +18,10 @@ class CWControllerViewModel {
         .number(1), .number(2), .number(3), .add,
         .number(0), .decimal, .backspace, .equals
     ]
+    //MARK: - Menu button clicked
+    func menuButtonTapped() {
+        presentMenuVC?()
+    }
     
     // MARK: - Variables
     private(set) lazy var CWHeaderLabel: String = self.firstNumber ?? "0"
@@ -33,12 +38,6 @@ class CWControllerViewModel {
         }
     }
     private(set) var operation: LogicOperations? = nil
-    
-    private(set) var firstNumberIsDecimal: Bool = false
-    private(set) var secondNumberIsDecimal: Bool = false
-    var eitherNumberIsDecimal: Bool {
-        return firstNumberIsDecimal || secondNumberIsDecimal
-    }
     var errorStatement : Bool = false
     
     // MARK: - Memory Variables
@@ -79,8 +78,6 @@ class CWControllerViewModel {
         self.currentNumber = .firstNumber
         self.firstNumber = nil
         self.secondNumber = nil
-        self.firstNumberIsDecimal = false
-        self.secondNumberIsDecimal = false
         self.operation = nil
         self.previousNumber = nil
         self.previousOperation = nil
@@ -113,7 +110,6 @@ class CWControllerViewModel {
         if let operation = self.operation, let firstNumber = self.firstNumber?.toDouble, let secondNumber = self.secondNumber?.toDouble {
             let result = self.getOperationResult(operation, firstNumber, secondNumber)
             let resultString : String
-            //let resultString = self.eitherNumberIsDecimal ? result.description : result.toDouble?.description
             if result.truncatingRemainder(dividingBy: 1) != 0 { resultString = result.description }
             else { resultString = result.toInt?.description ?? "Error"  }
             self.secondNumber = nil
@@ -123,7 +119,7 @@ class CWControllerViewModel {
             self.currentNumber = .firstNumber
         } else if let previousOperation = self.previousOperation, let firstNumber = self.firstNumber?.toDouble, let previousNumber = self.previousNumber?.toDouble {
             let result = self.getOperationResult(previousOperation, firstNumber, previousNumber)
-            let resultString = self.eitherNumberIsDecimal ? result.description : result.toInt?.description
+            let resultString = result.description
             self.firstNumber = resultString
         }
         if errorStatement == true {
@@ -139,7 +135,7 @@ class CWControllerViewModel {
         } else if self.currentNumber == .secondNumber {
             if let previousOperation = self.operation, let firstNumber = self.firstNumber?.toDouble, let secondNumber = self.secondNumber?.toDouble {
                 let result = self.getOperationResult(previousOperation, firstNumber, secondNumber)
-                let resultString = self.eitherNumberIsDecimal ? result.description : result.toInt?.description
+                let resultString = result.description
                 self.secondNumber = nil
                 self.firstNumber = resultString
                 self.currentNumber = .secondNumber
@@ -193,28 +189,24 @@ class CWControllerViewModel {
             if number.isInt { self.firstNumber = number.toInt?.description }
             else {
                 self.firstNumber = number.description
-                self.firstNumberIsDecimal = true
             }
         } else if self.currentNumber == .secondNumber, var number = self.secondNumber?.toDouble {
             number /= 100
             if number.isInt { self.secondNumber = number.toInt?.description }
             else {
                 self.secondNumber = number.description
-                self.secondNumberIsDecimal = true
             }
         }
     }
     
     private func didSelectDecimal() {
         if self.currentNumber == .firstNumber {
-            self.firstNumberIsDecimal = true
             if let firstNumber = self.firstNumber, !firstNumber.contains(".") {
                 self.firstNumber = firstNumber.appending(".")
             } else if self.firstNumber == nil {
                 self.firstNumber = "0."
             }
         } else if self.currentNumber == .secondNumber {
-            self.secondNumberIsDecimal = true
             if let secondNumber = self.secondNumber, !secondNumber.contains(".") {
                 self.secondNumber = secondNumber.appending(".")
             } else if self.secondNumber == nil {

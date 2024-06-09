@@ -35,7 +35,6 @@ class CWController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .systemPink
         self.setupUI()
         
         self.collectionView.delegate = self
@@ -47,6 +46,11 @@ class CWController: UIViewController {
             }
             
         }
+        viewModel.presentMenuVC = { [weak self] in
+            let menuViewController = MenuViewController()
+            self?.present(menuViewController, animated: true, completion: nil)
+        }
+        
     }
 
     //MARK: - UI Setup
