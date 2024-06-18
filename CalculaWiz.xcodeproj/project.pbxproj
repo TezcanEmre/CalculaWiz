@@ -12,6 +12,7 @@
 		EC8B7A512C161DCD00235842 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8B7A502C161DCD00235842 /* MenuViewController.swift */; };
 		EC8B7A532C16630600235842 /* DesignCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8B7A522C16630600235842 /* DesignCollectionViewController.swift */; };
 		EC8B7A552C166AD400235842 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8B7A542C166AD400235842 /* MenuTableViewCell.swift */; };
+		ECA04CE62C221C750047D3FF /* MenuViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA04CE52C221C750047D3FF /* MenuViewHeader.swift */; };
 		ECCB2BA22C00F040006B3BF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCB2BA12C00F040006B3BF4 /* AppDelegate.swift */; };
 		ECCB2BA42C00F040006B3BF4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCB2BA32C00F040006B3BF4 /* SceneDelegate.swift */; };
 		ECCB2BA62C00F040006B3BF4 /* CWController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCB2BA52C00F040006B3BF4 /* CWController.swift */; };
@@ -29,6 +30,7 @@
 		EC8B7A502C161DCD00235842 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		EC8B7A522C16630600235842 /* DesignCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCollectionViewController.swift; sourceTree = "<group>"; };
 		EC8B7A542C166AD400235842 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		ECA04CE52C221C750047D3FF /* MenuViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewHeader.swift; sourceTree = "<group>"; };
 		ECCB2B9E2C00F040006B3BF4 /* CalculaWiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalculaWiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCB2BA12C00F040006B3BF4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECCB2BA32C00F040006B3BF4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				ECCB2BBA2C00F7D1006B3BF4 /* ButtonCell.swift */,
 				ECCB2BBC2C00F843006B3BF4 /* CWHeaderCell.swift */,
 				EC8B7A542C166AD400235842 /* MenuTableViewCell.swift */,
+				ECA04CE52C221C750047D3FF /* MenuViewHeader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				EC8B7A532C16630600235842 /* DesignCollectionViewController.swift in Sources */,
 				EC53F9942C04FEEE009D4F22 /* LogicOperations.swift in Sources */,
 				ECCB2BBD2C00F843006B3BF4 /* CWHeaderCell.swift in Sources */,
+				ECA04CE62C221C750047D3FF /* MenuViewHeader.swift in Sources */,
 				ECCB2BA22C00F040006B3BF4 /* AppDelegate.swift in Sources */,
 				EC53F9962C050D8D009D4F22 /* extensions.swift in Sources */,
 				ECCB2BBF2C00F8A4006B3BF4 /* CWButton.swift in Sources */,

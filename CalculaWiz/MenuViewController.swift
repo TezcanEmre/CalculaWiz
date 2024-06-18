@@ -32,6 +32,8 @@ class MenuViewController: UIViewController {
         self.setupUI()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        let menuViewHeader = MenuViewHeader(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100))
+        self.tableView.tableHeaderView = menuViewHeader
 
         
     }
@@ -59,12 +61,13 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.identifier, for: indexPath) as? MenuTableViewCell  else {
             fatalError("tableview deque customcell error")
         }
-        cell.textLabel?.text = indexPath.row.description
-        
-        
-        
+        let image = self.iconImage[indexPath.row]
+        cell.configure(with: image, and: indexPath.row.description)
+        cell.backgroundColor = .bgRenk
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 112.5
+    }
     
 }
