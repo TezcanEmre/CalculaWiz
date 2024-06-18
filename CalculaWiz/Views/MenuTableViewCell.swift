@@ -9,15 +9,23 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    static let identifier = "MenuTableViewCell"
+    private let image_View: UIImageView = {
+        let imgView = UIImageView()
+        imgView.contentMode = .scaleAspectFit
+        imgView.image = UIImage(systemName: "questionmark")
+        imgView.tintColor = .label
+        return imgView
+    }()
+    
+    private let labell: UILabel = {
+       let label = UILabel()
+        label.textColor = .label
+        label.textAlignment = .left
+        label.font = .systemFont(ofSize: 24)
+        label.text = "error"
+        return label
+    }()
+    
 
 }

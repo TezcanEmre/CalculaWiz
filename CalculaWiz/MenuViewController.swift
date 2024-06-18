@@ -20,9 +20,9 @@ class MenuViewController: UIViewController {
     //MARK: - UI Components
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .systemBackground
+        tableView.backgroundColor = .bgRenk
         tableView.allowsSelection = true
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: MenuTableViewCell.identifier)
         return tableView
     }()
     //MARK: - Lifecycle
@@ -38,7 +38,6 @@ class MenuViewController: UIViewController {
     
     //MARK: - SetupUI
     private func setupUI() {
-        self.view.backgroundColor = .bgRenk
         self.view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -57,7 +56,9 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.identifier, for: indexPath) as? MenuTableViewCell  else {
+            fatalError("tableview deque customcell error")
+        }
         cell.textLabel?.text = indexPath.row.description
         
         

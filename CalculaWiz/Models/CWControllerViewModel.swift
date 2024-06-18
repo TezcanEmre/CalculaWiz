@@ -130,13 +130,19 @@ class CWControllerViewModel {
         } else if self.currentNumber == .secondNumber {
             if let previousOperation = self.operation, let firstNumber = self.firstNumber?.toDouble, let secondNumber = self.secondNumber?.toDouble {
                 let result = self.getOperationResult(previousOperation, firstNumber, secondNumber)
-                let resultString = result.description
+                let resultString : String
+                if result.truncatingRemainder(dividingBy: 1) != 0 { resultString = result.description }
+                else { resultString = result.toInt?.description ?? "Error"  }
                 self.secondNumber = nil
                 self.firstNumber = resultString
                 self.currentNumber = .secondNumber
                 self.operation = operation
             } else {
                 self.operation = operation
+            }
+            if errorStatement == true {
+                self.firstNumber = "Error"
+                errorStatement = false
             }
         }
     }
@@ -146,14 +152,10 @@ class CWControllerViewModel {
         guard let firstNumber = firstNumber, let secondNumber = secondNumber else { return 0 }
         switch operation {
         case .divide:
-            if firstNumber == 0 && secondNumber == 0 {
+            if secondNumber == 0 {
                 errorStatement = true
-                return 0
-            } else if secondNumber == 0 {
-                return 0
-            } else
-            { return (firstNumber / secondNumber) }
-            
+                return 0 }
+            return firstNumber / secondNumber
         case .multiply:
             return (firstNumber * secondNumber)
         case .subtract:
